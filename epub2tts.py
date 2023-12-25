@@ -306,12 +306,13 @@ class EpubToAudiobook:
 #               and torch.cuda.get_device_properties(0).total_memory > 3500000000
             ):
                 print("Using GPU")
+                print("VRAM: " + str(torch.cuda.get_device_properties(0).total_memory))
                 self.device = "cuda"
             else:
                 print("Not enough VRAM on GPU. Using CPU")
-                print("VRAM: " + str(torch.cuda.get_device_properties(0).total_memory))
                 self.device = "cpu"
 
+            print("Device: " + self.device)
             print("Loading model: " + self.xtts_model)
             # This will trigger model load even though we might not use tts object later
             tts = TTS("tts_models/multilingual/multi-dataset/xtts_v2").to(self.device)
