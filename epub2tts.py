@@ -70,7 +70,7 @@ class EpubToAudiobook:
             )
         else:
             self.xtts_model = self.tts_dir + "/" + model_name
-        self.whispermodel = whisper.load_model("tiny")
+        #self.whispermodel = whisper.load_model("tiny")
         self.ffmetadatafile = "FFMETADATAFILE"
         if torch.cuda.is_available():
             self.device = "cuda"
@@ -258,7 +258,7 @@ class EpubToAudiobook:
             f.write(result)
 
     def compare(self, text, wavfile):
-        result = self.whispermodel.transcribe(wavfile)
+        #result = self.whispermodel.transcribe(wavfile)
         text = re.sub(" +", " ", text).lower().strip()
         ratio = fuzz.ratio(text, result["text"].lower())
         print("Transcript: " + result["text"].lower()) if self.debug else None
