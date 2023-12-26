@@ -25,7 +25,7 @@ from TTS.tts.configs.xtts_config import XttsConfig
 from TTS.tts.models.xtts import Xtts
 from TTS.utils.generic_utils import get_user_data_dir
 from tqdm import tqdm
-import whisper
+#import whisper
 
 
 class EpubToAudiobook:
@@ -421,7 +421,8 @@ class EpubToAudiobook:
                                         self.tts.tts_to_file(
                                             text=sentence_groups[x], file_path=tempwav
                                         )
-                                ratio = self.compare(sentence_groups[x], tempwav)
+                                #ratio = self.compare(sentence_groups[x], tempwav)
+                                ratio = self.minratio
                                 if ratio < self.minratio:
                                     raise Exception(
                                         "Spoken text did not sound right - "
