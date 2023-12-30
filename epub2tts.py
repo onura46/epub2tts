@@ -191,7 +191,7 @@ class EpubToAudiobook:
             self.end = len(self.chapters_to_read)
 
     def get_chapters_text(self):
-        with open(self.source, "r") as file:
+        with open(self.source, "r", encoding="utf8") as file:
             text = file.read()
         text = self.prep_text(text)
         max_len = 50000
